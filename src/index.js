@@ -6,6 +6,12 @@ const { extname } = require('path');
 
 const route = require('./routes');
 
+const db = require('./config/db');
+
+//connect to db
+
+db.connect();
+
 
 const app = express();
 const port = 3000;
@@ -20,7 +26,7 @@ app.use(morgan('combined'));
 //template engine
 app.engine('hbs', exphdb.engine({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname,'resources/views'));
+app.set('views', path.join(__dirname,'resources', 'views'));
 
 
 //route init
@@ -29,4 +35,4 @@ route(app);
 
 
 
-app.listen(port, () => {console.log(`Example app listening on port ${port}`);});
+app.listen(port, () => {console.log(`App listening on port ${port}`);});
