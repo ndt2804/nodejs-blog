@@ -5,7 +5,7 @@ class SiteController{
     home(req, res, next) {
         Course.find({})
         .then(courses => {
-           
+            
             res.render('home', { 
                 courses : multipleMongooseToObject(courses)
             });
@@ -18,5 +18,5 @@ class SiteController{
     }
 }
 
-module.exports = new SiteController;
+module.exports = new SiteController();
 
